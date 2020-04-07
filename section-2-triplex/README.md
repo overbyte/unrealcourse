@@ -27,3 +27,9 @@ g++ triplex.cpp -o triplex
 ```
 ./triplex
 ```
+
+# Easy Compile and Save
+
+```
+g++ triplex.cpp -o triplex && ./triplex
+```

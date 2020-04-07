@@ -22,12 +22,12 @@ int OutputIntro()
 
 int OutputChallenge()
 {
-    int a = 3;
-    int b = 4;
-    int c = 9;
+    const int a = 3;
+    const int b = 4;
+    const int c = 9;
 
-    int sum = a + b + c;
-    int product = a * b * c;
+    const int sum = a + b + c;
+    const int product = a * b * c;
 
     std::cout << sum << std::endl;
     std::cout << product << std::endl;

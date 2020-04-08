@@ -5,25 +5,35 @@ void OutputIntro();
 void OutputChallenge();
 void InputPlayerGuess();
 void TestWinCondition();
+void ResetStdIn();
 
 const int CodeA = 3;
 const int CodeB = 4;
 const int CodeC = 9;
 const int CodeSum = CodeA + CodeB + CodeC;
 const int CodeProduct = CodeA * CodeB * CodeC;
+const int TotalGuesses = 3;
 
 int GuessA, GuessB, GuessC;
 int GuessSum, GuessProduct;
+int CurrentGuess = 0;
+int isGameWon = false;
 
 int main() 
 {
-    PlayGame();
+    OutputIntro();
+
+    while (CurrentGuess < TotalGuesses && !isGameWon) {
+        PlayGame();
+        ResetStdIn();
+    }
+
     return 0; 
 }
 
 void PlayGame()
 {
-    OutputIntro();
+    CurrentGuess++;
     InputPlayerGuess();
     TestWinCondition();
 }
@@ -79,7 +89,17 @@ void InputPlayerGuess()
 void TestWinCondition() {
     if (GuessSum == CodeSum && GuessProduct == CodeProduct) {
         std::cout << "Congratulations! You got it right!\n";
+        isGameWon = true;
     } else {
-        std::cout << "That wasn't it - Everybody dies\n";
+        std::cout << "That wasn't it - Time for another go...\n\n";
     }
+}
+
+// resolve errors in the input stream
+void ResetStdIn()
+{
+    // clear and std in errors
+    std::cin.clear();
+    // discard the buffer
+    std::cin.ignore();
 }

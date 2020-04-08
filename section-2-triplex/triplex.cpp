@@ -31,7 +31,47 @@ void PlayGame()
 // output a static intro
 void OutputIntro()
 {
-    std::cout << "Only one more step to do!\n";
+
+
+    std::cout << "                      :::!~!!!!!:.\n";
+    std::cout << "                  .xUHWH!! !!?M88WHX:.\n";
+    std::cout << "                .X*#M@$!!  !X!M$$$$$$WWx:.\n";
+
+    std::cout << "               :!!!!!!?H! :!$!$$$$$$$$$$8X:\n";
+
+    std::cout << "              !!~  ~:~!! :~!$!#$$$$$$$$$$8X:\n";
+
+    std::cout << "             :!~::!H!<   ~.U$X!?R$$$$$$$$MM!\n";
+
+    std::cout << "             ~!~!!!!~~ .:XW$$$U!!?$$$$$$RMM!\n";
+
+    std::cout << "               !:~~~ .:!M\"T#$$$$WX??#MRRMMM!\n";
+
+    std::cout << "               ~?WuxiW*`   `\"#$$$$8!!!!??!!!\n";
+
+    std::cout << "             :X- M$$$$       `\"T#$T~!8$WUXU~\n";
+
+    std::cout << "            :%`  ~#$$$m:        ~!~ ?$$$$$$\n";
+
+    std::cout << "          :!`.-   ~T$$$$8xx.  .xWW- ~\"\"##*\"\n";
+
+    std::cout << ".....   -~~:<` !    ~?T#$$@@W@*?$$      /`\n";
+
+    std::cout << "W$@@M!!! .!~~ !!     .:XUW$W!~ `\"~:    :\n";
+
+    std::cout << "#\"~~`.:x%`!!  !H:   !WM$$$$Ti.: .!WUn+!`\n";
+
+    std::cout << ":::~:!!`:X~ .: ?H.!u \"$$$B$$$!W:U!T$$M~\n";
+
+    std::cout << ".~~   :X@!.-~   ?@WTWo(\"*$$$W$TH$! `\n";
+
+    std::cout << "Wi.~!X$?!-~    : ?$$$B$Wu(\"**$RM!\n";
+
+    std::cout << "$R@i.~~ !     :   ~$$$$$B$$en:``\n";
+
+    std::cout << "?MXT@Wx.~    :     ~\"##*$$$$M~\n";
+
+    std::cout << "Only one more step to go!\n";
     std::cout << "You've avoided all the booby traps and security ";
     std::cout << "so there's just one more thing to do - ";
     std::cout << "hack the terminal! \n";

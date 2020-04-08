@@ -3,12 +3,23 @@
 int OutputIntro();
 int OutputChallenge();
 int InputPlayerGuess();
+int TestWinCondition();
+
+const int CodeA = 3;
+const int CodeB = 4;
+const int CodeC = 9;
+const int CodeSum = CodeA + CodeB + CodeC;
+const int CodeProduct = CodeA * CodeB * CodeC;
+
+int GuessA, GuessB, GuessC;
+int GuessSum, GuessProduct;
 
 int main() 
 {
     OutputIntro();
     OutputChallenge();
     InputPlayerGuess();
+    TestWinCondition();
 
     return 0; 
 }
@@ -30,13 +41,6 @@ int OutputIntro()
 // output the challenge
 int OutputChallenge()
 {
-    const int CodeA = 3;
-    const int CodeB = 4;
-    const int CodeC = 9;
-
-    const int CodeSum = CodeA + CodeB + CodeC;
-    const int CodeProduct = CodeA * CodeB * CodeC;
-
     std::cout << "There are 3 numbers in the code" << std::endl;
     std::cout << "The numbers add up to " << CodeSum << std::endl;
     std::cout << "The numbers multiply to " << CodeProduct << std::endl;
@@ -47,19 +51,28 @@ int OutputChallenge()
 // get player input
 int InputPlayerGuess()
 {
-    int GuessA, GuessB, GuessC;
-
     std::cout << "Enter your 3 numbers" << std::endl;
     std::cin >> GuessA;
     std::cin >> GuessB;
     std::cin >> GuessC;
 
     std::cout << "You entered " << GuessA << ", " << GuessB << ", " << GuessC << std::endl;
-    int GuessSum = GuessA + GuessB + GuessC;
-    int GuessProduct = GuessA * GuessB * GuessC;
+    GuessSum = GuessA + GuessB + GuessC;
+    GuessProduct = GuessA * GuessB * GuessC;
 
     std::cout << "The numbers add up to " << GuessSum << std::endl;
     std::cout << "The numbers multiply to " << GuessProduct << std::endl;
+
+    return 0;
+}
+
+// check if the player got it right
+int TestWinCondition() {
+    if (GuessSum == CodeSum && GuessProduct == CodeProduct) {
+        std::cout << "Congratulations! You got it right!" << std::endl;
+    } else {
+        std::cout << "That wasn't it - Everybody dies" << std::endl;
+    }
 
     return 0;
 }

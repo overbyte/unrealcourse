@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 bool PlayGame(int Difficulty);
 bool TestWinCondition();
@@ -60,9 +61,13 @@ int main()
 
 bool PlayGame(int Difficulty)
 {
-    const int CodeA = rand() % Difficulty + 1;
-    const int CodeB = rand() % Difficulty + 1;
-    const int CodeC = rand() % Difficulty + 1;
+    // use seed rand() using time (from ctime)
+    srand(time(NULL));
+    // then take the remainder of rand / difficulty + difficulty
+    // to produce a random range
+    const int CodeA = rand() % Difficulty + Difficulty;
+    const int CodeB = rand() % Difficulty + Difficulty;
+    const int CodeC = rand() % Difficulty + Difficulty;
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
 

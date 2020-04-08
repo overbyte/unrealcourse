@@ -17,7 +17,6 @@ int GuessSum, GuessProduct;
 int main() 
 {
     OutputIntro();
-    OutputChallenge();
     InputPlayerGuess();
     TestWinCondition();
 
@@ -31,16 +30,7 @@ int OutputIntro()
     std::cout << "You've avoided all the booby traps and security ";
     std::cout << "so there's just one more thing to do - ";
     std::cout << "hack the terminal! \n";
-    std::cout << "It's all down to you!\n";
-    std::cout << "Enter the correct codes...\n";
-
-    return 0;
-}
-
-
-// output the challenge
-int OutputChallenge()
-{
+    std::cout << "It's all down to you!\n\n";
     std::cout << "There are 3 numbers in the code\n";
     std::cout << "The numbers add up to " << CodeSum << std::endl;
     std::cout << "The numbers multiply to " << CodeProduct << std::endl;

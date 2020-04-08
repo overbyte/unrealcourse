@@ -1,5 +1,8 @@
 # Triplex
 
+Please note: This is all done for Linux - the compilation and run will be
+different for Windows.
+
 ## Design Doc
 
 Hacking minigame
@@ -18,17 +21,23 @@ Hacking minigame
 
 # To Compile
 
+This will compile the single class `triplex.cpp`
+
 ```
 g++ triplex.cpp -o triplex
 ```
 
 # To Run Comiled Application
 
+This will run the compiled output from the compilation `triplex`
+
 ```
 ./triplex
 ```
 
-# Easy Compile and Save
+# Easy Compile and Run
+
+A quick one-liner to compile and run
 
 ```
 g++ triplex.cpp -o triplex && ./triplex

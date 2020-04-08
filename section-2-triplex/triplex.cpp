@@ -52,9 +52,7 @@ int OutputChallenge()
 int InputPlayerGuess()
 {
     std::cout << "Enter your 3 numbers" << std::endl;
-    std::cin >> GuessA;
-    std::cin >> GuessB;
-    std::cin >> GuessC;
+    std::cin >> GuessA >> GuessB >> GuessC;
 
     std::cout << "You entered " << GuessA << ", " << GuessB << ", " << GuessC << std::endl;
     GuessSum = GuessA + GuessB + GuessC;

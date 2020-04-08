@@ -12,8 +12,8 @@ Hacking minigame
 ### Mechanics
 
 * 2 different challenges
-** Guess must add up to given target
-** Guess must be divisible by given number
+  * Guess must add up to given target
+  * Guess must be divisible by given number
 * Starts easy but becomes harder
 
 # To Compile

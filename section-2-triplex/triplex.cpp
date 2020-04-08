@@ -27,12 +27,12 @@ int main()
 // output a static intro
 int OutputIntro()
 {
-    std::cout << "Only one more step to do!" << std::endl;
+    std::cout << "Only one more step to do!\n";
     std::cout << "You've avoided all the booby traps and security ";
     std::cout << "so there's just one more thing to do - ";
-    std::cout << "hack the terminal! " << std::endl;
-    std::cout << "It's all down to you!" << std::endl;
-    std::cout << "Enter the correct codes..." << std::endl;
+    std::cout << "hack the terminal! \n";
+    std::cout << "It's all down to you!\n";
+    std::cout << "Enter the correct codes...\n";
 
     return 0;
 }
@@ -41,7 +41,7 @@ int OutputIntro()
 // output the challenge
 int OutputChallenge()
 {
-    std::cout << "There are 3 numbers in the code" << std::endl;
+    std::cout << "There are 3 numbers in the code\n";
     std::cout << "The numbers add up to " << CodeSum << std::endl;
     std::cout << "The numbers multiply to " << CodeProduct << std::endl;
 
@@ -51,7 +51,7 @@ int OutputChallenge()
 // get player input
 int InputPlayerGuess()
 {
-    std::cout << "Enter your 3 numbers" << std::endl;
+    std::cout << "Enter your 3 numbers\n";
     std::cin >> GuessA >> GuessB >> GuessC;
 
     std::cout << "You entered " << GuessA << ", " << GuessB << ", " << GuessC << std::endl;
@@ -67,9 +67,9 @@ int InputPlayerGuess()
 // check if the player got it right
 int TestWinCondition() {
     if (GuessSum == CodeSum && GuessProduct == CodeProduct) {
-        std::cout << "Congratulations! You got it right!" << std::endl;
+        std::cout << "Congratulations! You got it right!\n";
     } else {
-        std::cout << "That wasn't it - Everybody dies" << std::endl;
+        std::cout << "That wasn't it - Everybody dies\n";
     }
 
     return 0;

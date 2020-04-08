@@ -1,9 +1,10 @@
 #include <iostream>
 
-int OutputIntro();
-int OutputChallenge();
-int InputPlayerGuess();
-int TestWinCondition();
+void PlayGame();
+void OutputIntro();
+void OutputChallenge();
+void InputPlayerGuess();
+void TestWinCondition();
 
 const int CodeA = 3;
 const int CodeB = 4;
@@ -16,15 +17,19 @@ int GuessSum, GuessProduct;
 
 int main() 
 {
-    OutputIntro();
-    InputPlayerGuess();
-    TestWinCondition();
-
+    PlayGame();
     return 0; 
 }
 
+void PlayGame()
+{
+    OutputIntro();
+    InputPlayerGuess();
+    TestWinCondition();
+}
+
 // output a static intro
-int OutputIntro()
+void OutputIntro()
 {
     std::cout << "Only one more step to do!\n";
     std::cout << "You've avoided all the booby traps and security ";
@@ -34,12 +39,10 @@ int OutputIntro()
     std::cout << "There are 3 numbers in the code\n";
     std::cout << "The numbers add up to " << CodeSum << std::endl;
     std::cout << "The numbers multiply to " << CodeProduct << std::endl;
-
-    return 0;
 }
 
 // get player input
-int InputPlayerGuess()
+void InputPlayerGuess()
 {
     std::cout << "Enter your 3 numbers\n";
     std::cin >> GuessA >> GuessB >> GuessC;
@@ -50,17 +53,13 @@ int InputPlayerGuess()
 
     std::cout << "The numbers add up to " << GuessSum << std::endl;
     std::cout << "The numbers multiply to " << GuessProduct << std::endl;
-
-    return 0;
 }
 
 // check if the player got it right
-int TestWinCondition() {
+void TestWinCondition() {
     if (GuessSum == CodeSum && GuessProduct == CodeProduct) {
         std::cout << "Congratulations! You got it right!\n";
     } else {
         std::cout << "That wasn't it - Everybody dies\n";
     }
-
-    return 0;
 }

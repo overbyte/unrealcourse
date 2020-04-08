@@ -25,6 +25,15 @@ int main()
     {
         bLevelComplete = PlayGame(LevelDifficulty);
 
+        if (CurrentGuess > TotalGuesses)
+        {
+            std::cout << "<<< SECURITY HAS BEEN ALERTED TO YOUR PRESCENCE >>>\n";
+            std::cout << "You ran out of time but you'll have plenty of time ";
+            std::cout << "to think about it behind bars. Better luck next time, eh?";
+
+            return 0;
+        }
+
         ResetStdIn();
 
         if (bLevelComplete)

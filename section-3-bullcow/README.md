@@ -10,6 +10,7 @@ game
 
 ### Game Loop
 
+```
 asciiflow.com diagram
              +---------------------+
              |                     |
@@ -61,4 +62,4 @@ asciiflow.com diagram
                                           |              |
                                           |              |
                                           +--------------+
-
+```

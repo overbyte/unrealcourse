@@ -8,7 +8,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     InitGame();
     PrintWelcomeMessage();
-    // Ask for guess
+    AskForGuess();
 }
 
 void UBullCowCartridge::InitGame() 
@@ -25,7 +25,8 @@ void UBullCowCartridge::PrintWelcomeMessage()
 
 void UBullCowCartridge::AskForGuess()
 {
-    PrintLine(TEXT("I'm thinking of a 5 letter word")); // TODO: fix magic number
+    PrintLine(FString::Printf(TEXT("The hidden word is %s"), *HiddenWord));
+    PrintLine(FString::Printf(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len()));
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -34,7 +35,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
     // check if guess is isogram
     if (!IsGuessIsogram(Input)) {
-        PrintLine(TEXT("That wasn't an isogram. Try again"));
+        PrintLine(FString::Printf(TEXT("%s isn't an isogram. Try again"), *Input));
         return;
     }
     // prompt to guess again

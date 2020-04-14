@@ -8,7 +8,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     // reset lives
     SetHiddenWord(); // set the hidden word
-    DisplayWelcomeMessage(); // print welcome message
+    PrintWelcomeMessage(); // print welcome message
     // Ask for guess
     // check guess is correct
     // if yes, print the win message
@@ -21,7 +21,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     // otherwise quit
 }
 
-void UBullCowCartridge::DisplayWelcomeMessage()
+void UBullCowCartridge::PrintWelcomeMessage()
 {
     PrintLine(TEXT("Welcome to the Bull Cow Game."));
     PrintLine(TEXT("Press Tab to interact."));

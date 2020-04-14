@@ -7,15 +7,13 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     Super::BeginPlay();
 
     InitGame();
-    PrintWelcomeMessage(); // print welcome message
+    PrintWelcomeMessage();
     // Ask for guess
 }
 
 void UBullCowCartridge::InitGame() 
 {
-    // reset lives
     currentLives = START_LIVES;
-    // set the hidden word
     HiddenWord = TEXT("amiga");    
 }
 

@@ -6,10 +6,17 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
 
-    // reset lives
-    SetHiddenWord(); // set the hidden word
+    InitGame();
     PrintWelcomeMessage(); // print welcome message
     // Ask for guess
+}
+
+void UBullCowCartridge::InitGame() 
+{
+    // reset lives
+    currentLives = START_LIVES;
+    // set the hidden word
+    HiddenWord = TEXT("amiga");    
 }
 
 void UBullCowCartridge::PrintWelcomeMessage()
@@ -18,12 +25,6 @@ void UBullCowCartridge::PrintWelcomeMessage()
     PrintLine(TEXT("Press Tab to interact."));
     PrintLine(TEXT("I'm thinking of a 5 letter word")); // TODO: fix magic number
 }
-
-void UBullCowCartridge::SetHiddenWord()
-{
-    HiddenWord = TEXT("amiga");    
-}
-
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {

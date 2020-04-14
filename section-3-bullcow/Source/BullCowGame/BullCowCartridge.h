@@ -17,7 +17,11 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 
 	// Your declarations go below!
 	private:
+    const int32 START_LIVES = 5;
     FString HiddenWord;
-    void SetHiddenWord();
-    void DisplayWelcomeMessage();
+    int32 currentLives;
+
+    void InitGame();
+    void AskForGuess();
+    void PrintWelcomeMessage();
 };

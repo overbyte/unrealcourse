@@ -21,6 +21,10 @@ void UBullCowCartridge::PrintWelcomeMessage()
 {
     PrintLine(TEXT("Welcome to the Bull Cow Game."));
     PrintLine(TEXT("Press Tab to interact."));
+}
+
+void UBullCowCartridge::AskForGuess()
+{
     PrintLine(TEXT("I'm thinking of a 5 letter word")); // TODO: fix magic number
 }
 

@@ -10,15 +10,6 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     SetHiddenWord(); // set the hidden word
     PrintWelcomeMessage(); // print welcome message
     // Ask for guess
-    // check guess is correct
-    // if yes, print the win message
-    // otherwise, decrement lives
-    // check we still have a life
-    // if yes, ask for guess
-    // otherwise, print lose message
-    // ask to play again
-    // if yes, start again
-    // otherwise quit
 }
 
 void UBullCowCartridge::PrintWelcomeMessage()
@@ -37,6 +28,18 @@ void UBullCowCartridge::SetHiddenWord()
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
+
+    // check if guess is isogram
+    // prompt to guess again
+    // check guess is correct
+    // if yes, print the win message
+    // otherwise, decrement lives
+    // check we still have a life
+    // if yes, ask for guess
+    // otherwise, print lose message
+    // ask to play again
+    // if yes, start again
+    // otherwise quit
 
     if (Input == HiddenWord) 
     {

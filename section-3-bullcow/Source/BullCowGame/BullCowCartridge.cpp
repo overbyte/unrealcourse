@@ -33,6 +33,10 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     ClearScreen();
 
     // check if guess is isogram
+    if (!IsGuessIsogram(Input)) {
+        PrintLine(TEXT("That wasn't an isogram. Try again"));
+        return;
+    }
     // prompt to guess again
     // check guess is correct
     // if yes, print the win message
@@ -51,5 +55,17 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     else
     {
         PrintLine("Nope. That wasn't it");
+    }
+}
+
+bool UBullCowCartridge::IsGuessIsogram(FString Guess)
+{
+    if (Guess.Len() == HiddenWord.Len()) 
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
     }
 }

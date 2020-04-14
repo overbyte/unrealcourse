@@ -15,5 +15,12 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
     const FString HiddenWord = TEXT("amiga");
 
-
+    if (Input == HiddenWord) 
+    {
+        PrintLine("YOU GOT IT!");
+    }
+    else
+    {
+        PrintLine("Nope. That wasn't it");
+    }
 }

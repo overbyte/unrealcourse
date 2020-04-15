@@ -17,11 +17,15 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 
 	// Your declarations go below!
 	private:
+    const int32 MIN_WORD_SIZE = 4;
+    const int32 MAX_WORD_SIZE = 8;
     FString HiddenWord;
     int32 Lives;
     bool bIsGameOver;
 
     void InitGame();
+    FString GetHiddenWord() const;
+    TArray<FString> GetValidWords(TArray<FString> WordList) const;
     void AskForGuess() const;
     void PrintWelcomeMessage() const;
     void ProcessGuess(FString Guess);

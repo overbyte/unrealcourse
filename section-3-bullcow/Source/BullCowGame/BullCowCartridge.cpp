@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "BullCowCartridge.h"
 #include "HiddenWordList.h"
+#include <ctime>
 
 
 void UBullCowCartridge::BeginPlay() // When the game starts
@@ -13,12 +14,39 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
 void UBullCowCartridge::InitGame()
 {
-    HiddenWord = TEXT("amiga");
+    HiddenWord = GetHiddenWord();
     Lives = HiddenWord.Len();
     bIsGameOver = false;
 
     PrintWelcomeMessage();
     AskForGuess();
+}
+
+FString UBullCowCartridge::GetHiddenWord() const
+{
+    TArray<FString> ValidWords = GetValidWords(Words);
+
+    // seed the RNG
+    srand(time(NULL));
+    const int32 RandomIndex = rand() % ValidWords.Num();
+    return ValidWords[RandomIndex];
+}
+
+TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordList) const
+{
+    TArray<FString> ValidWords;
+
+    for (int32 Index = 0; Index < WordList.Num(); Index++)
+    {
+        if (WordList[Index].Len() >= MIN_WORD_SIZE && 
+            WordList[Index].Len() <= MAX_WORD_SIZE && 
+            IsIsogram(WordList[Index]))
+        {
+            ValidWords.Emplace(WordList[Index]);
+        }
+    }
+
+    return ValidWords;
 }
 
 void UBullCowCartridge::PrintWelcomeMessage() const

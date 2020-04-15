@@ -83,19 +83,28 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
     if (Lives > 0)
     {
         PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
-        PrintLine(TEXT("The hidden word was %s"), *HiddenWord);
         return;
     }
 
     // otherwise, print lose message
     PrintLine(TEXT("Oh Noez! You're out of lives"));
+    PrintLine(TEXT("The hidden word was %s"), *HiddenWord);
     EndGame();
 }
 
 bool UBullCowCartridge::IsIsogram(FString Word) const
 {
-    // TODO : doesn't really check for isogram
-    return (Guess.Len() == HiddenWord.Len());
+    //TCHAR WordDict[] = Word;
+    PrintLine(TEXT("length %i"), Word.Len());
+    // for each character in guess
+    // note: There is a null character at the end of an FString called \0
+    for (int32 i = 0; i < Word.Len() - 1; ++i)
+    {
+        PrintLine(TEXT("%c"), Word[i]);
+        // if the character is in our guess dictionary
+        // the guess is not an isogram
+        // else save the character to the dictionary
+    }
     return true;
 }
 

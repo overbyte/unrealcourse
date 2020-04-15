@@ -25,8 +25,8 @@ void UBullCowCartridge::PrintWelcomeMessage()
 
 void UBullCowCartridge::AskForGuess()
 {
-    PrintLine(FString::Printf(TEXT("The hidden word is %s"), *HiddenWord));
-    PrintLine(FString::Printf(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len()));
+    PrintLine(TEXT("The hidden word is %s"), *HiddenWord);
+    PrintLine(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len());
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -35,7 +35,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
     // check if guess is isogram
     if (!IsGuessIsogram(Input)) {
-        PrintLine(FString::Printf(TEXT("%s isn't an isogram. Try again"), *Input));
+        PrintLine(TEXT("%s isn't an isogram. Try again"), *Input);
         return;
     }
     // prompt to guess again

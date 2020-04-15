@@ -97,5 +97,7 @@ void UBullCowCartridge::EndGame()
     // if yes, start again
     // otherwise quit
     bIsGameOver = true;
-    PrintLine("Thanks for playing. \nPress Enter to play again");
+    PrintLine(TEXT("The hidden word was %s"), *HiddenWord);
+    PrintLine(TEXT("Thanks for playing."));
+    PrintLine(TEXT("\n\nPress Enter to play again"));
 }

@@ -7,12 +7,13 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     Super::BeginPlay();
 
     InitGame();
+    PrintLine(TEXT("The hidden word is %s"), *HiddenWord);
 }
 
-void UBullCowCartridge::InitGame() 
+void UBullCowCartridge::InitGame()
 {
     currentLives = START_LIVES;
-    HiddenWord = TEXT("amiga");    
+    HiddenWord = TEXT("amiga");
     bIsGameOver = false;
 
     PrintWelcomeMessage();
@@ -27,7 +28,6 @@ void UBullCowCartridge::PrintWelcomeMessage()
 
 void UBullCowCartridge::AskForGuess()
 {
-    PrintLine(TEXT("The hidden word is %s"), *HiddenWord);
     PrintLine(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len());
     PrintLine(TEXT("You have %i lives left"), currentLives);
 }

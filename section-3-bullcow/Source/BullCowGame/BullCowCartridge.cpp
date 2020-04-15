@@ -86,6 +86,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 
 bool UBullCowCartridge::IsGuessIsogram(FString Guess)
 {
+    // TODO : doesn't really check for isogram
     return (Guess.Len() == HiddenWord.Len());
 }
 

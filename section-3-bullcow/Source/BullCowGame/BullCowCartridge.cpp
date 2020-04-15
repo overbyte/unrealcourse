@@ -12,8 +12,8 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
 void UBullCowCartridge::InitGame()
 {
-    currentLives = START_LIVES;
     HiddenWord = TEXT("amiga");
+    currentLives = HiddenWord.Len();
     bIsGameOver = false;
 
     PrintWelcomeMessage();
@@ -42,47 +42,45 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
          InitGame();
     }
     // else check if guess is isogram
-    else if (!IsGuessIsogram(Input))
+    else
     {
-        // prompt to guess again
-        PrintLine(TEXT("%s isn't an isogram. Try again"), *Input);
-        return;
-    }
-    // check guess is correct
-    else if (Input == HiddenWord)
-    {
-    // if yes, print the win message
-        PrintLine(TEXT("YOU GOT IT!"));
-        EndGame();
-    }
-    else if (Input != "")
-    {
-        // otherwise, decrement lives
-        --currentLives;
-        // check we still have a life
-        if (currentLives > 0)
+        if (!IsGuessIsogram(Input))
         {
-            PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), currentLives);
+            // prompt to guess again
+            PrintLine(TEXT("%s isn't an isogram. Try again"), *Input);
+            return;
         }
-        else
+        // check guess is correct
+        else if (Input == HiddenWord)
         {
-            // otherwise, print lose message
-            PrintLine(TEXT("You're out of lives"));
+            // if yes, print the win message
+            PrintLine(TEXT("YOU GOT IT!"));
             EndGame();
         }
-    }
+        // add test to see if input is empty (user has just pressed enter)
+        else if (Input != "")
+        {
+            // otherwise, decrement lives
+            --currentLives;
+            // check we still have a life
+            if (currentLives > 0)
+            {
+                PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), currentLives);
+            }
+            else
+            {
+                // otherwise, print lose message
+                PrintLine(TEXT("You're out of lives"));
+                EndGame();
+            }
+        }
+
+    } 
 }
 
 bool UBullCowCartridge::IsGuessIsogram(FString Guess)
 {
-    if (Guess.Len() == HiddenWord.Len())
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (Guess.Len() == HiddenWord.Len());
 }
 
 void UBullCowCartridge::EndGame()

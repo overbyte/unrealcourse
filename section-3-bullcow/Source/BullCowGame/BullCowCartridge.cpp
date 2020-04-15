@@ -43,7 +43,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     else
     {
         ProcessGuess(Input);
-    } 
+    }
 }
 
 void UBullCowCartridge::ProcessGuess(FString Guess)
@@ -95,12 +95,17 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 bool UBullCowCartridge::IsIsogram(FString Word) const
 {
     //TCHAR WordDict[] = Word;
-    PrintLine(TEXT("length %i"), Word.Len());
     // for each character in guess
     // note: There is a null character at the end of an FString called \0
-    for (int32 i = 0; i < Word.Len() - 1; ++i)
+    for (int32 Index = 0; Index < Word.Len(); ++Index)
     {
-        PrintLine(TEXT("%c"), Word[i]);
+        for (int32 Comparison = Index + 1; Comparison < Word.Len(); ++Comparison)
+        {
+            if (Word[Index] == Word[Comparison])
+            {
+                return false;
+            }
+        }
         // if the character is in our guess dictionary
         // the guess is not an isogram
         // else save the character to the dictionary

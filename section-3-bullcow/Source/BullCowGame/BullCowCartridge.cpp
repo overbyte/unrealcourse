@@ -63,16 +63,16 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         return;
     }
 
-    if (!IsGuessIsogram(Guess))
+    if (Guess.Len() != HiddenWord.Len())
     {
-        // prompt to guess again
-        PrintLine(TEXT("%s isn't an isogram. Try again"), *Guess);
+        PrintLine(TEXT("%s isn't the correct length. Try again."), *Guess);
         return;
     }
 
-    // add test to see if input is empty (user has just pressed enter)
-    if (Guess == "")
+    if (!IsIsogram(Guess))
     {
+        // prompt to guess again
+        PrintLine(TEXT("%s isn't an isogram. Try again"), *Guess);
         return;
     }
 

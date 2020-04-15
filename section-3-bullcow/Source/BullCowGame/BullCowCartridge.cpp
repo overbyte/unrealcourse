@@ -42,36 +42,31 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
          InitGame();
     }
     // else check if guess is isogram
-    else if (!IsGuessIsogram(Input)) 
+    else if (!IsGuessIsogram(Input))
     {
+        // prompt to guess again
         PrintLine(TEXT("%s isn't an isogram. Try again"), *Input);
         return;
     }
-    // prompt to guess again
     // check guess is correct
-    // if yes, print the win message
-    // otherwise, decrement lives
-    // check we still have a life
-    // if yes, ask for guess
-    // otherwise, print lose message
-    // ask to play again
-    // if yes, start again
-    // otherwise quit
-
-    else if (Input == HiddenWord) 
+    else if (Input == HiddenWord)
     {
+    // if yes, print the win message
         PrintLine(TEXT("YOU GOT IT!"));
         EndGame();
     }
     else if (Input != "")
     {
+        // otherwise, decrement lives
         --currentLives;
-        if (currentLives > 0) 
+        // check we still have a life
+        if (currentLives > 0)
         {
             PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), currentLives);
         }
         else
         {
+            // otherwise, print lose message
             PrintLine(TEXT("You're out of lives"));
             EndGame();
         }
@@ -80,11 +75,11 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
 bool UBullCowCartridge::IsGuessIsogram(FString Guess)
 {
-    if (Guess.Len() == HiddenWord.Len()) 
+    if (Guess.Len() == HiddenWord.Len())
     {
         return true;
     }
-    else 
+    else
     {
         return false;
     }
@@ -92,6 +87,10 @@ bool UBullCowCartridge::IsGuessIsogram(FString Guess)
 
 void UBullCowCartridge::EndGame()
 {
+    // if yes, ask for guess
+    // ask to play again
+    // if yes, start again
+    // otherwise quit
     bIsGameOver = true;
     PrintLine("Thanks for playing. \nPress Enter to play again");
 }

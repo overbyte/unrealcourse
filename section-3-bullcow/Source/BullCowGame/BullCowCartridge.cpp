@@ -36,46 +36,52 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 {
     ClearScreen();
 
-    // if game is over, clear screen and setup game
     if (bIsGameOver)
     {
          InitGame();
     }
-    // else check if guess is isogram
     else
     {
-        if (!IsGuessIsogram(Input))
-        {
-            // prompt to guess again
-            PrintLine(TEXT("%s isn't an isogram. Try again"), *Input);
-            return;
-        }
-        // check guess is correct
-        else if (Input == HiddenWord)
-        {
-            // if yes, print the win message
-            PrintLine(TEXT("YOU GOT IT!"));
-            EndGame();
-        }
-        // add test to see if input is empty (user has just pressed enter)
-        else if (Input != "")
-        {
-            // otherwise, decrement lives
-            --Lives;
-            // check we still have a life
-            if (Lives > 0)
-            {
-                PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
-            }
-            else
-            {
-                // otherwise, print lose message
-                PrintLine(TEXT("You're out of lives"));
-                EndGame();
-            }
-        }
-
+        ProcessGuess(Input);
     } 
+}
+
+void UBullCowCartridge::ProcessGuess(FString Guess)
+{
+    // check guess is correct
+    if (Guess == HiddenWord)
+    {
+        // if yes, print the win message
+        PrintLine(TEXT("YOU GOT IT!"));
+        EndGame();
+        return;
+    }
+
+    if (!IsGuessIsogram(Guess))
+    {
+        // prompt to guess again
+        PrintLine(TEXT("%s isn't an isogram. Try again"), *Guess);
+        return;
+    }
+
+    // add test to see if input is empty (user has just pressed enter)
+    if (Guess == "")
+    {
+        return;
+    }
+
+    // otherwise, decrement lives
+    --Lives;
+    // check we still have a life
+    if (Lives > 0)
+    {
+        PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
+        return;
+    }
+
+    // otherwise, print lose message
+    PrintLine(TEXT("You're out of lives"));
+    EndGame();
 }
 
 bool UBullCowCartridge::IsGuessIsogram(FString Guess)

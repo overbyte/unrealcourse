@@ -22,9 +22,9 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
     bool bIsGameOver;
 
     void InitGame();
-    void AskForGuess();
-    void PrintWelcomeMessage();
+    void AskForGuess() const;
+    void PrintWelcomeMessage() const;
     void ProcessGuess(FString Guess);
-    bool IsGuessIsogram(FString Guess);
+    bool IsIsogram(FString Word) const;
     void EndGame();
 };

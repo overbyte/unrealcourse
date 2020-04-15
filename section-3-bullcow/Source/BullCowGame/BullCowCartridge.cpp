@@ -20,13 +20,13 @@ void UBullCowCartridge::InitGame()
     AskForGuess();
 }
 
-void UBullCowCartridge::PrintWelcomeMessage()
+void UBullCowCartridge::PrintWelcomeMessage() const
 {
     PrintLine(TEXT("Welcome to the Bull Cow Game."));
     PrintLine(TEXT("Press Tab to interact."));
 }
 
-void UBullCowCartridge::AskForGuess()
+void UBullCowCartridge::AskForGuess() const
 {
     PrintLine(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len());
     PrintLine(TEXT("You have %i lives left"), Lives);
@@ -86,10 +86,11 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
     EndGame();
 }
 
-bool UBullCowCartridge::IsGuessIsogram(FString Guess)
+bool UBullCowCartridge::IsIsogram(FString Word) const
 {
     // TODO : doesn't really check for isogram
     return (Guess.Len() == HiddenWord.Len());
+    return true;
 }
 
 void UBullCowCartridge::EndGame()

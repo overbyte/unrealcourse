@@ -48,6 +48,12 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 
 void UBullCowCartridge::ProcessGuess(FString Guess)
 {
+    // add test to see if input is empty (user has just pressed enter)
+    if (Guess == "")
+    {
+        return;
+    }
+
     // check guess is correct
     if (Guess == HiddenWord)
     {

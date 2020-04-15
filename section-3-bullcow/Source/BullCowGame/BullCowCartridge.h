@@ -24,6 +24,7 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
     void InitGame();
     void AskForGuess();
     void PrintWelcomeMessage();
+    void ProcessGuess(FString Guess);
     bool IsGuessIsogram(FString Guess);
     void EndGame();
 };

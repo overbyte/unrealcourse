@@ -20,9 +20,11 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
     const int32 START_LIVES = 5;
     FString HiddenWord;
     int32 currentLives;
+    bool bIsGameOver;
 
     void InitGame();
     void AskForGuess();
     void PrintWelcomeMessage();
     bool IsGuessIsogram(FString Guess);
+    void EndGame();
 };

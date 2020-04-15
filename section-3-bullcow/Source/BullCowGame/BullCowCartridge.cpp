@@ -7,14 +7,16 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     Super::BeginPlay();
 
     InitGame();
-    PrintWelcomeMessage();
-    AskForGuess();
 }
 
 void UBullCowCartridge::InitGame() 
 {
     currentLives = START_LIVES;
     HiddenWord = TEXT("amiga");    
+    bIsGameOver = false;
+
+    PrintWelcomeMessage();
+    AskForGuess();
 }
 
 void UBullCowCartridge::PrintWelcomeMessage()
@@ -27,14 +29,21 @@ void UBullCowCartridge::AskForGuess()
 {
     PrintLine(TEXT("The hidden word is %s"), *HiddenWord);
     PrintLine(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len());
+    PrintLine(TEXT("You have %i lives left"), currentLives);
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
 
-    // check if guess is isogram
-    if (!IsGuessIsogram(Input)) {
+    // if game is over, clear screen and setup game
+    if (bIsGameOver)
+    {
+         InitGame();
+    }
+    // else check if guess is isogram
+    else if (!IsGuessIsogram(Input)) 
+    {
         PrintLine(TEXT("%s isn't an isogram. Try again"), *Input);
         return;
     }
@@ -49,13 +58,23 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     // if yes, start again
     // otherwise quit
 
-    if (Input == HiddenWord) 
+    else if (Input == HiddenWord) 
     {
-        PrintLine("YOU GOT IT!");
+        PrintLine(TEXT("YOU GOT IT!"));
+        EndGame();
     }
-    else
+    else if (Input != "")
     {
-        PrintLine("Nope. That wasn't it");
+        --currentLives;
+        if (currentLives > 0) 
+        {
+            PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), currentLives);
+        }
+        else
+        {
+            PrintLine(TEXT("You're out of lives"));
+            EndGame();
+        }
     }
 }
 
@@ -69,4 +88,10 @@ bool UBullCowCartridge::IsGuessIsogram(FString Guess)
     {
         return false;
     }
+}
+
+void UBullCowCartridge::EndGame()
+{
+    bIsGameOver = true;
+    PrintLine("Thanks for playing. \nPress Enter to play again");
 }

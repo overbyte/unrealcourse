@@ -72,15 +72,17 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 
     // otherwise, decrement lives
     --Lives;
+
     // check we still have a life
     if (Lives > 0)
     {
         PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
+        PrintLine(TEXT("The hidden word was %s"), *HiddenWord);
         return;
     }
 
     // otherwise, print lose message
-    PrintLine(TEXT("You're out of lives"));
+    PrintLine(TEXT("Oh Noez! You're out of lives"));
     EndGame();
 }
 
@@ -97,7 +99,6 @@ void UBullCowCartridge::EndGame()
     // if yes, start again
     // otherwise quit
     bIsGameOver = true;
-    PrintLine(TEXT("The hidden word was %s"), *HiddenWord);
     PrintLine(TEXT("Thanks for playing."));
     PrintLine(TEXT("\n\nPress Enter to play again"));
 }

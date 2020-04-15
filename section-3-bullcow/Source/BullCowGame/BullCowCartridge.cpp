@@ -72,7 +72,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
     if (!IsIsogram(Guess))
     {
         // prompt to guess again
-        PrintLine(TEXT("%s isn't an isogram. Try again"), *Guess);
+        PrintLine(TEXT("%s has duplicate letters. Try again"), *Guess);
         return;
     }
 

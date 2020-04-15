@@ -18,7 +18,7 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 	// Your declarations go below!
 	private:
     FString HiddenWord;
-    int32 currentLives;
+    int32 Lives;
     bool bIsGameOver;
 
     void InitGame();

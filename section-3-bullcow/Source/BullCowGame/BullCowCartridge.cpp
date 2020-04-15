@@ -13,7 +13,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 void UBullCowCartridge::InitGame()
 {
     HiddenWord = TEXT("amiga");
-    currentLives = HiddenWord.Len();
+    Lives = HiddenWord.Len();
     bIsGameOver = false;
 
     PrintWelcomeMessage();
@@ -29,7 +29,7 @@ void UBullCowCartridge::PrintWelcomeMessage()
 void UBullCowCartridge::AskForGuess()
 {
     PrintLine(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len());
-    PrintLine(TEXT("You have %i lives left"), currentLives);
+    PrintLine(TEXT("You have %i lives left"), Lives);
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -61,11 +61,11 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
         else if (Input != "")
         {
             // otherwise, decrement lives
-            --currentLives;
+            --Lives;
             // check we still have a life
-            if (currentLives > 0)
+            if (Lives > 0)
             {
-                PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), currentLives);
+                PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
             }
             else
             {

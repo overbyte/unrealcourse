@@ -107,6 +107,11 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
     if (Lives > 0)
     {
         PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
+        // using out paramters seems shady
+        int32 Bulls, Cows;
+        GetBullCows(Guess, Bulls, Cows);
+        PrintLine(TEXT("You got %i Bulls and %i Cows"), Bulls, Cows) 
+
         return;
     }
 
@@ -135,6 +140,11 @@ bool UBullCowCartridge::IsIsogram(const FString& Word) const
         // else save the character to the dictionary
     }
     return true;
+}
+
+void GetBullCows(const FString& Guess, int32& Bulls, int32& Cows)
+{
+
 }
 
 void UBullCowCartridge::EndGame()

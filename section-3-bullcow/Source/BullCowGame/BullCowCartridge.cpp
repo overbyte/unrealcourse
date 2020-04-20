@@ -29,7 +29,7 @@ FString UBullCowCartridge::GetHiddenWord() const
     // seed the RNG
     //srand(time(NULL));
     //const int32 RandomIndex = rand() % ValidWords.Num();
-    return ValidWords[FMath::RandRange(0, ValidWords.Num())];
+    return ValidWords[FMath::RandRange(0, ValidWords.Num() - 1)];
 }
 
 TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList) const

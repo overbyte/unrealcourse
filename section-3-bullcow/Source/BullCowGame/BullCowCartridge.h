@@ -26,7 +26,6 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
     void InitGame();
     FString GetHiddenWord() const;
     TArray<FString> GetValidWords(const TArray<FString>& WordList) const;
-    void AskForGuess() const;
     void PrintWelcomeMessage() const;
     void ProcessGuess(const FString& Guess);
     bool IsIsogram(const FString& Word) const;

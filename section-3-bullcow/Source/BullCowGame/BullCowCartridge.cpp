@@ -9,7 +9,6 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     Super::BeginPlay();
 
     InitGame();
-    PrintLine(TEXT("The hidden word is %s"), *HiddenWord);
 }
 
 void UBullCowCartridge::InitGame()
@@ -19,7 +18,6 @@ void UBullCowCartridge::InitGame()
     bIsGameOver = false;
 
     PrintWelcomeMessage();
-    AskForGuess();
 }
 
 FString UBullCowCartridge::GetHiddenWord() const
@@ -53,11 +51,9 @@ void UBullCowCartridge::PrintWelcomeMessage() const
 {
     PrintLine(TEXT("Welcome to the Bull Cow Game."));
     PrintLine(TEXT("Press Tab to interact."));
-}
 
-void UBullCowCartridge::AskForGuess() const
-{
     PrintLine(TEXT("I'm thinking of a %i letter word"), HiddenWord.Len());
+    PrintLine(TEXT("The hidden word is %s"), *HiddenWord); // TODO debug
     PrintLine(TEXT("You have %i lives left"), Lives);
 }
 

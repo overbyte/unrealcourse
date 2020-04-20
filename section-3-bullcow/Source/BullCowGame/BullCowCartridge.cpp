@@ -8,12 +8,12 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
 
+    Isograms = GetValidWords(Words);
     InitGame();
 }
 
 void UBullCowCartridge::InitGame()
 {
-    Isograms = GetValidWords(Words);
     HiddenWord = GetHiddenWord();
     Lives = HiddenWord.Len();
     bIsGameOver = false;

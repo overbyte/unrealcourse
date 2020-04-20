@@ -107,10 +107,8 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
     if (Lives > 0)
     {
         PrintLine(TEXT("Nope. That wasn't it. Try again - you have %i lives left"), Lives);
-        // using out paramters seems shady
-        int32 Bulls, Cows;
-        GetBullCows(Guess, Bulls, Cows);
-        PrintLine(TEXT("You got %i Bulls and %i Cows"), Bulls, Cows);
+        FBullCowCount BullCowCount = GetBullCowCount(Guess);
+        PrintLine(TEXT("You got %i Bulls and %i Cows"), BullCowCount.Bulls, BullCowCount.Cows);
 
         return;
     }
@@ -142,17 +140,15 @@ bool UBullCowCartridge::IsIsogram(const FString& Word) const
     return true;
 }
 
-void UBullCowCartridge::GetBullCows(const FString& Guess, int32& BullCount, int32& CowCount) const
+FBullCowCount UBullCowCartridge::GetBullCowCount(const FString& Guess) const
 {
-    // initialise out params
-    BullCount = 0;
-    CowCount = 0;
+    FBullCowCount BullCowCount;
 
     for (int32 GuessIndex = 0; GuessIndex < Guess.Len(); ++GuessIndex)
     {
         if (Guess[GuessIndex] == HiddenWord[GuessIndex])
         {
-            ++BullCount;
+            ++BullCowCount.Bulls;
             continue;
         }
 
@@ -160,11 +156,13 @@ void UBullCowCartridge::GetBullCows(const FString& Guess, int32& BullCount, int3
         {
             if (Guess[GuessIndex] == HiddenWord[HiddenIndex])
             {
-                ++CowCount;
+                ++BullCowCount.Cows;
                 break;
             }
         }
     }
+
+    return BullCowCount;
 }
 
 void UBullCowCartridge::EndGame()

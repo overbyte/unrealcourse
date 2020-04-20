@@ -9,14 +9,14 @@
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
-	public:
-	virtual void BeginPlay() override;
-	virtual void OnInput(const FString& Input) override;
+    public:
+    virtual void BeginPlay() override;
+    virtual void OnInput(const FString& Input) override;
 
-	// Your declarations go below!
-	private:
+    // Your declarations go below!
+    private:
     const int32 MIN_WORD_SIZE = 4;
     const int32 MAX_WORD_SIZE = 8;
     TArray<FString> Isograms;

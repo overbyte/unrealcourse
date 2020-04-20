@@ -110,7 +110,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         // using out paramters seems shady
         int32 Bulls, Cows;
         GetBullCows(Guess, Bulls, Cows);
-        PrintLine(TEXT("You got %i Bulls and %i Cows"), Bulls, Cows) 
+        PrintLine(TEXT("You got %i Bulls and %i Cows"), Bulls, Cows);
 
         return;
     }

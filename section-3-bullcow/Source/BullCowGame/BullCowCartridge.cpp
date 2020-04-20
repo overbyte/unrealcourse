@@ -75,7 +75,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     }
 }
 
-void UBullCowCartridge::ProcessGuess(FString Guess)
+void UBullCowCartridge::ProcessGuess(const FString& Guess)
 {
     // add test to see if input is empty (user has just pressed enter)
     if (Guess == "")
@@ -121,7 +121,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
     EndGame();
 }
 
-bool UBullCowCartridge::IsIsogram(FString Word) const
+bool UBullCowCartridge::IsIsogram(const FString& Word) const
 {
     //TCHAR WordDict[] = Word;
     // for each character in guess

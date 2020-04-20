@@ -25,10 +25,10 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 
     void InitGame();
     FString GetHiddenWord() const;
-    TArray<FString> GetValidWords(TArray<FString> WordList) const;
+    TArray<FString> GetValidWords(const TArray<FString>& WordList) const;
     void AskForGuess() const;
     void PrintWelcomeMessage() const;
-    void ProcessGuess(FString Guess);
-    bool IsIsogram(FString Word) const;
+    void ProcessGuess(const FString& Guess);
+    bool IsIsogram(const FString& Word) const;
     void EndGame();
 };

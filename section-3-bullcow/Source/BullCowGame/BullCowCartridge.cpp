@@ -32,17 +32,17 @@ FString UBullCowCartridge::GetHiddenWord() const
     return ValidWords[RandomIndex];
 }
 
-TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordList) const
+TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList) const
 {
     TArray<FString> ValidWords;
 
-    for (int32 Index = 0; Index < WordList.Num(); Index++)
+    for (FString Word : WordList)
     {
-        if (WordList[Index].Len() >= MIN_WORD_SIZE && 
-            WordList[Index].Len() <= MAX_WORD_SIZE && 
-            IsIsogram(WordList[Index]))
+        if (Word.Len() >= MIN_WORD_SIZE && 
+            Word.Len() <= MAX_WORD_SIZE && 
+            IsIsogram(Word))
         {
-            ValidWords.Emplace(WordList[Index]);
+            ValidWords.Emplace(Word);
         }
     }
 

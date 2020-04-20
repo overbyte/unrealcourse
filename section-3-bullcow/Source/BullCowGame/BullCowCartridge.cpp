@@ -13,6 +13,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
 void UBullCowCartridge::InitGame()
 {
+    Isograms = GetValidWords(Words);
     HiddenWord = GetHiddenWord();
     Lives = HiddenWord.Len();
     bIsGameOver = false;
@@ -22,12 +23,10 @@ void UBullCowCartridge::InitGame()
 
 FString UBullCowCartridge::GetHiddenWord() const
 {
-    TArray<FString> ValidWords = GetValidWords(Words);
-
     // seed the RNG
     //srand(time(NULL));
     //const int32 RandomIndex = rand() % ValidWords.Num();
-    return ValidWords[FMath::RandRange(0, ValidWords.Num() - 1)];
+    return Isograms[FMath::RandRange(0, Isograms.Num() - 1)];
 }
 
 TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList) const

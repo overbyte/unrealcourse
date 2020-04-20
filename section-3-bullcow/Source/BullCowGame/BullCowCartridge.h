@@ -19,6 +19,7 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 	private:
     const int32 MIN_WORD_SIZE = 4;
     const int32 MAX_WORD_SIZE = 8;
+    TArray<FString> Isograms;
     FString HiddenWord;
     int32 Lives;
     bool bIsGameOver;

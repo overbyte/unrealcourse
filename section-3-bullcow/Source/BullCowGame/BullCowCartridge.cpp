@@ -142,9 +142,29 @@ bool UBullCowCartridge::IsIsogram(const FString& Word) const
     return true;
 }
 
-void GetBullCows(const FString& Guess, int32& Bulls, int32& Cows)
+void UBullCowCartridge::GetBullCows(const FString& Guess, int32& BullCount, int32& CowCount) const
 {
+    // initialise out params
+    BullCount = 0;
+    CowCount = 0;
 
+    for (int32 GuessIndex = 0; GuessIndex < Guess.Len(); ++GuessIndex)
+    {
+        if (Guess[GuessIndex] == HiddenWord[GuessIndex])
+        {
+            ++BullCount;
+            continue;
+        }
+
+        for (int32 HiddenIndex = 0; HiddenIndex < Guess.Len(); ++HiddenIndex)
+        {
+            if (Guess[GuessIndex] == HiddenWord[HiddenIndex])
+            {
+                ++CowCount;
+                break;
+            }
+        }
+    }
 }
 
 void UBullCowCartridge::EndGame()
